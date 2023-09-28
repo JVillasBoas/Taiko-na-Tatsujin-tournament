@@ -1,1 +1,7 @@
-
+#container {
+    background: url("wallpaper1.png");
+}
+#menu-inicial {
+    width: 30vw;
+    height: fit-content;
+}
