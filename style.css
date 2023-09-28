@@ -1,7 +1,36 @@
+@import url('https://fonts.cdnfonts.com/css/manga-temple');
+body {
+    font-family: 'Manga Temple', sans-serif;
+    margin: 0;
+}
 #container {
-    background: url("wallpaper1.png");
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("wallpaper1.png");
 }
-#menu-inicial {
-    width: 30vw;
-    height: fit-content;
+#menu-inicial {                                     
+    width: 44vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+    background-color: rgb(240, 142, 142);
 }
+img {
+    width: 35vw;
+    height: 40vh;
+}
+#form-inicial {
+    display: grid;
+}
+
+#botao-inicial {
+
+    display: flex;
+    justify-content: space-around;
+}
+
