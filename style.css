@@ -26,7 +26,7 @@ img {
 }
 #form-inicial {
     height: 100%;
-    width: 100%;
+    width: 70%;
     align-items: center;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -38,8 +38,10 @@ img {
 
 #form-quantidade {
     grid-area: form-quantidade;
-    display: grid;
+    display: flex;
+    flex-direction: row;
     justify-content: center;
+    align-items: center;
 }
 
 #botao-inicial1 {
@@ -56,7 +58,6 @@ img {
 
 .botao{
     background-color: #FEF2CA;
-    border: none;
     color: black;
     padding: 15px 32px;
     text-align: center;
@@ -69,6 +70,19 @@ img {
     transition: background-color 0.5s ease;
 }
 .botao:hover{
+    background-color: #C8EBE5;
+}
+
+#quantidade-input {
+    background-color: #FEF2CA;
+    border-radius: 8px;
+    width: 4vw;
+    height: 3.5vh;
+    margin-left: 1vw;
+
+}
+
+#quantidade-input:hover {
     background-color: #C8EBE5;
 }
 
