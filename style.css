@@ -2,6 +2,7 @@
 body {
     font-family: 'Manga Temple', sans-serif;
     margin: 0;
+    background-image: url("wallpaper1.png");
 }
 #container {
     width: 100vw;
@@ -9,11 +10,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url("wallpaper1.png");
 }
 #menu-inicial {                                     
-    width: 44vw;
-    height: 80vh;
+    width: 50%;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -86,30 +86,10 @@ body {
     background-color: #C8EBE5;
 }
 
-#container-meio {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-image: url("wallpaper2.png");
-}
-
-#menu-meio {                                     
-    width: 55vw;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 15px;
-    background-color: white
-}
-
 .nomeando-times {
     background-color: #4FC6C7;
     margin: 5%;
-    height: 5vh;
-    width: 30vw;
+    padding: 0.8vw;
     display: flex;
     align-items: center;
     justify-content: center;
