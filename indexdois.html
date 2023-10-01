@@ -4,17 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="javascript.js">
     <title>Taiko na Tatsujin`s Number of Teams</title>
 </head>
 <body>
     <section id="container-meio">
         <div id="menu-meio">
+            <p id="textinho"></p>
             <div><img id="titulo-menu2" src="Logo-menu-meio.png" alt=""></div>
             <div class="nomeando-times">
-                <label for="fname">Insert Team`s Name</label><input class="nome-input" type="text">
+                <label for="nome-input">Insert Team`s Name</label><input class="nome-input" type="text">
             </div>
         </div>
     </section>
+    <script>
+        function  mostrar() {
+            let local = document.querySelector("#menu-meio");
+            let divisoria = document.createElement("div");
+            //divisoria.className("nomeando-times");
+            let label = document.createElement("label");
+            label.innerHTML = "Insert Team`s Name";
+            divisoria.appendChild(label);
+            let texto = document.createElement("input");
+            divisoria.appendChild(texto);
+            texto.setAttribute("type","text");
+            //texto.className("input-name");
+            local.appendChild(divisoria); 
+        }
+
+        mostrar();
+    </script>
+    <script src="javascript.js"></script>
 </body>
 </html>
