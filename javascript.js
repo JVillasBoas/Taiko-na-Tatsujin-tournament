@@ -11,11 +11,11 @@ function novaTela() {
     document.body.style.backgroundImage = "url('wallpaper2.png')";
     document.body.style.height = "max-content";
 } 
-
+var quantidade;
 function  mostrar() {
-    var quantidade = document.querySelector("#quantidade-input");
-    if (quantidade.value > 20) {
-        alert("Quantidade máxima de times ultrapassado. Cadastre 20 ou menos times, por favor.");
+    quantidade = document.querySelector("#quantidade-input");
+    if (quantidade.value > 20 || quantidade.value < 3) {
+        alert("Quantidade não suportada.");
     } else {
         for(c=1;c<=quantidade.value;c++) {
             var local = document.querySelector("#menu-inicial");
@@ -25,6 +25,7 @@ function  mostrar() {
             label.innerHTML = "Insert Team`s Name";
             divisoria.appendChild(label);
             let texto = document.createElement("input");
+            texto.setAttribute('id','texto' + c);
             divisoria.appendChild(texto);
             texto.setAttribute("type","text");
             texto.setAttribute("class","nome-input");
@@ -41,20 +42,29 @@ function  mostrar() {
 }
 
 class time {
-    constructor(nome,pontuação) {
+    constructor(nome,classificação) {
         this.nome = nome;
-        this.pontos = pontuação;
+        this.classific = classificação;
     }
-   nome() {
-    //atribui os nomes dos inputs
-   }
-   pontos() {
-    //atribui pontos
-   }
 }
-
+const times = [];
+var testando = [];
 function start() {
-    //nova tela e no final chama nome()
+    for(c=1;c<=quantidade.value;c++) {
+        let nome_time = document.querySelector('#texto' + c);
+        times.push(new time(nome_time.value));
+    }
+    let local = document.querySelector("#menu-inicial");
+    local.innerHTML = "";
+    let imagem = document.createElement("img");
+    imagem.setAttribute("src","Logo-menu-meio.png");
+    imagem.setAttribute("id","titulo-menu2");
+    local.appendChild(imagem);
+    for(c=0;c<=quantidade.value-1;c++) {
+        for(j=c+1;j<=quantidade.value-1;j++) {
+            testando.push(times[j].nome + "X" + times[c].nome);
+        }
+    }
 }
 
 
