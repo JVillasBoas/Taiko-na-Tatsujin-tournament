@@ -133,3 +133,45 @@ body {
     background-color: #F94828;
 }
 
+.jogo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.times-disputa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3B2149;
+    color:  #FEF2CA;
+    border-radius: 8px;
+    width: 10vw;
+    height: 6vh;
+    margin: 5%;
+}
+
+.input-options {
+    background-color: #FEF2CA;
+    color: #3B2149;
+    margin: 5%;
+    border-radius: 8px;
+}
+
+#botao-resultado {
+    background-color: #FEF2CA;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 3%;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.5s ease;
+}
+#botao-resultado:hover{
+    background-color: #3B2149;
+}
+
