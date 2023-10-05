@@ -41,12 +41,10 @@ function  mostrar() {
     }
 }
 
-//minhas alterações
-
 function Resultado() {
-    for (c = 0; c < numero_disputa; c++) { //aqui coloquei zero pra dar o tamanho e tirei o <= do disputa pra so <
+    for (c = 0; c < numero_disputa; c++) { 
+
         let selecionar = document.querySelector("#input-options" + c).value;
-        // let valor = selecionar.options[selecionar.selectedIndex].value;
 
         for (j = 0; j < times.length; j++) {
             if (selecionar == times[j].nome) {
@@ -56,17 +54,16 @@ function Resultado() {
     }
 }
 
-//
-
 class time {
     constructor(nome,quantidade_vitorias) {
         this.nome = nome;
         this.quantidade_vitorias = quantidade_vitorias;
     }
 }
+
 const times = [];
-//var testando = [];
 var numero_disputa = 0;
+
 function start() {
     for(c=1;c<=quantidade.value;c++) {
         let nome_time = document.querySelector('#texto' + c);
@@ -87,7 +84,7 @@ function start() {
             texto.setAttribute("class","times-disputa");
             texto.innerHTML = times[c].nome + "X" + times[j].nome;
             let selecionar = document.createElement("select");
-            selecionar.setAttribute("id","input-options" + c); //aqui nao pode ser j porque ele vai se repetir para os outros inputs
+            selecionar.setAttribute("id","input-options" + numero_disputa); 
             selecionar.setAttribute("class","input-options"); 
             let options1 = document.createElement("option");
             let options2 = document.createElement("option");
@@ -99,21 +96,13 @@ function start() {
             divisoria.appendChild(selecionar);
             local.appendChild(divisoria);
             numero_disputa++
-            //testando.push(times[j].nome + "X" + times[c].nome);
         }
     }
     let botao = document.createElement("input");
     botao.setAttribute("type","button");
     botao.setAttribute("id","botao-resultado");
     botao.setAttribute("value","Outcome");
-
-    //minhas alterações
-
     botao.setAttribute("onclick", "Resultado()");
-
-    //
-
-    //comecarTorneio.setAttribute("onClick","resultado()");
     local.appendChild(botao);
 }
 
