@@ -146,7 +146,7 @@ body {
     background-color: #3B2149;
     color:  #FEF2CA;
     border-radius: 8px;
-    width: 10vw;
+    width: fit-content;
     height: 6vh;
     margin: 5%;
 }
@@ -173,5 +173,10 @@ body {
 }
 #botao-resultado:hover{
     background-color: #3B2149;
+}
+
+#titulo-menu3 {
+    width: 22vw;
+    height: auto;
 }
 

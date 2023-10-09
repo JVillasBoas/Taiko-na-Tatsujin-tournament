@@ -41,6 +41,8 @@ function  mostrar() {
     }
 }
 
+var vencedor
+var pos_vencedor
 function Resultado() {
     for (c = 0; c < numero_disputa; c++) { 
 
@@ -52,6 +54,24 @@ function Resultado() {
             }
         }
     }
+
+    for(c=0;c<quantidade.value;c++) {
+        vitorias.push(times.quantidade_vitorias[c]);
+    }
+    
+    for(c=0;c<quantidade.value-1;c++) {
+        if (times[c].quantidade_vitorias > times[c+1].quantidade_vitorias) {
+            vencedor = times[c].nome;
+            pos_vencedor = c;
+            //console.log("teste");
+        } else {
+            vencedor = times[c+1].nome;
+            pos_vencedor = c+1;
+        }
+    }
+
+    if (vitorias)
+
 }
 
 class time {
@@ -77,7 +97,7 @@ function start() {
     local.appendChild(imagem);
     
     for(c=0;c<quantidade.value-1;c++) {
-        for(j=1;j<quantidade.value;j++) {
+        for(j=c+1;j<quantidade.value;j++) {
             let divisoria = document.createElement("div");
             divisoria.setAttribute("class","jogo");
             let texto = document.createElement("div");
