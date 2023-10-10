@@ -135,8 +135,19 @@ body {
 
 .jogo {
     display: flex;
-    flex-direction: row;
+    flex-direction: column-reverse;
     justify-content: space-around;
+    background-color:  #00000014;
+    margin: 5%;
+    border-radius: 8px;
+    max-width: 90%;
+    padding: 3%;
+}
+
+.disputas {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .times-disputa {
@@ -146,9 +157,21 @@ body {
     background-color: #3B2149;
     color:  #FEF2CA;
     border-radius: 8px;
-    width: fit-content;
-    height: 6vh;
-    margin: 5%;
+    min-width: 10vw;
+    min-height: 6vh;
+    
+}
+
+.x-disputa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3B2149;
+    color:  #FEF2CA;
+    border-radius: 8px;
+    width: 4vw;
+    min-height: 6vh;
+    margin: 2%;
 }
 
 .input-options {
@@ -156,6 +179,8 @@ body {
     color: #3B2149;
     margin: 5%;
     border-radius: 8px;
+    min-width: 8vw;
+    min-height: 4vh;
 }
 
 #botao-resultado {
@@ -178,5 +203,33 @@ body {
 #titulo-menu3 {
     width: 22vw;
     height: auto;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #c8ebe594;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #4FC6C7;
+    color: white;
+    font-size: 20px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color:  #FEF2CA;
 }
 
