@@ -40,9 +40,10 @@ function  mostrar() {
         novaTela();
     }
 }
-
 var vencedor
-var pos_vencedor
+var vencedores = [];
+var pos_vencedor;
+var vitorias = [];
 function Resultado() {
     for (c = 0; c < numero_disputa; c++) { 
 
@@ -55,22 +56,30 @@ function Resultado() {
         }
     }
 
-    for(c=0;c<quantidade.value;c++) {
-        vitorias.push(times.quantidade_vitorias[c]);
+    for(y=0;y<quantidade.value;y++) {
+        vitorias.push(times[y].quantidade_vitorias);
     }
     
     for(c=0;c<quantidade.value-1;c++) {
         if (times[c].quantidade_vitorias > times[c+1].quantidade_vitorias) {
-            vencedor = times[c].nome;
-            pos_vencedor = c;
+            vencedor = times[c];
+            //pos_vencedor = c;
             //console.log("teste");
         } else {
-            vencedor = times[c+1].nome;
-            pos_vencedor = c+1;
+            vencedor = times[c+1];
+            //pos_vencedor = c+1;
         }
     }
 
-    if (vitorias)
+    if (vitorias.indexOf(vencedor.quantidade_vitorias) != -1) {
+        for(c=0;c<quantidade.value;c++) {
+            if (vencedor.quantidade_vitorias == times[c].quantidade_vitorias ) {
+                vencedores.push(times[c].nome);
+            }
+        }
+    }
+
+
 
 }
 
