@@ -133,52 +133,64 @@ class time {
     }
 }
 
+function nomeRepetido() {
+    for(c=1;c<=quantidade.value;c++) {
+        for(j=c+1;j<=quantidade.value;j++) {
+            if (document.getElementById("texto" + c).value == document.getElementById("texto" + j).value) { 
+                return true;
+            }
+        }
+    }
+}
+
 const times = [];
 var numero_disputa = 0;
 
 function gerarTelaDisputa() {
-    combinarTimes();
-    let local = document.querySelector("#menu-inicial");
-    local.innerHTML = "";
-    let imagem = document.createElement("img");
-    imagem.setAttribute("src","nuvem.png");
-    imagem.setAttribute("id","titulo-menu3");
-    local.appendChild(imagem);
-    for(c=0;c<quantidade.value-1;c++) {
-        for(j=c+1;j<quantidade.value;j++) {
-            let divisoria = document.createElement("div");
-            let divisoria2 = document.createElement("div");
-            let divisoria3 = document.createElement("div");
-            divisoria3.innerHTML = 'Select the winner:'
-            divisoria2.setAttribute("class","disputas");
-            divisoria.setAttribute("class","jogo");
-            let texto = document.createElement("div");
-            texto.setAttribute("class","times-disputa");
-            texto.innerHTML = times[c].nome;
-            let texto2 = document.createElement("div");
-            texto2.setAttribute("class","x-disputa");
-            texto2.innerHTML = "X";
-            let texto3 = document.createElement("div");
-            texto3.setAttribute("class","times-disputa");
-            texto3.innerHTML = times[j].nome;
-            let selecionar = document.createElement("select");
-            selecionar.setAttribute("id","input-options" + numero_disputa); 
-            selecionar.setAttribute("class","input-options"); 
-            let options1 = document.createElement("option");
-            let options2 = document.createElement("option");
-            options1.innerHTML = times[j].nome;
-            options2.innerHTML = times[c].nome;
-            selecionar.appendChild(options1);
-            selecionar.appendChild(options2);
-            divisoria3.appendChild(selecionar);
-            divisoria2.appendChild(texto);
-            divisoria2.appendChild(texto2);
-            divisoria2.appendChild(texto3);
-            divisoria.appendChild(divisoria3);
-            divisoria.appendChild(divisoria2);
-            local.appendChild(divisoria);
-            
-            numero_disputa++
+    if (nomeRepetido() == true) {
+        alert("Nome de time inválido.");
+    } else {
+        combinarTimes();
+        let local = document.querySelector("#menu-inicial");
+        local.innerHTML = "";
+        let imagem = document.createElement("img");
+        imagem.setAttribute("src","nuvem.png");
+        imagem.setAttribute("id","titulo-menu3");
+        local.appendChild(imagem);
+        for(c=0;c<quantidade.value-1;c++) {
+            for(j=c+1;j<quantidade.value;j++) {
+                let divisoria = document.createElement("div");
+                let divisoria2 = document.createElement("div");
+                let divisoria3 = document.createElement("div");
+                divisoria3.innerHTML = 'Select the winner:'
+                divisoria2.setAttribute("class","disputas");
+                divisoria.setAttribute("class","jogo");
+                let texto = document.createElement("div");
+                texto.setAttribute("class","times-disputa");
+                texto.innerHTML = times[c].nome;
+                let texto2 = document.createElement("div");
+                texto2.setAttribute("class","x-disputa");
+                texto2.innerHTML = "X";
+                let texto3 = document.createElement("div");
+                texto3.setAttribute("class","times-disputa");
+                texto3.innerHTML = times[j].nome;
+                let selecionar = document.createElement("select");
+                selecionar.setAttribute("id","input-options" + numero_disputa); 
+                selecionar.setAttribute("class","input-options"); 
+                let options1 = document.createElement("option");
+                let options2 = document.createElement("option");
+                options1.innerHTML = times[j].nome;
+                options2.innerHTML = times[c].nome;
+                selecionar.appendChild(options1);
+                selecionar.appendChild(options2);
+                divisoria3.appendChild(selecionar);
+                divisoria2.appendChild(texto);
+                divisoria2.appendChild(texto2);
+                divisoria2.appendChild(texto3);
+                divisoria.appendChild(divisoria3);
+                divisoria.appendChild(divisoria2);
+                local.appendChild(divisoria);
+                numero_disputa++
         }
     }
     let botao = document.createElement("input");
@@ -187,6 +199,7 @@ function gerarTelaDisputa() {
     botao.setAttribute("value","Show");
     botao.setAttribute("onclick", "gerarTelaRanking()");
     local.appendChild(botao);
+    }
 }
 
 function combinarTimes() {
@@ -195,6 +208,8 @@ function combinarTimes() {
         times.push(new time(nome_time.value, 0));
     }
 }
+
+
 
 
 
