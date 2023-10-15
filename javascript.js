@@ -37,7 +37,7 @@ function gerarTelaNomear() {
         comecarTorneio.setAttribute("type","button");
         comecarTorneio.setAttribute("value","Start");
         comecarTorneio.setAttribute("id","botao-start");
-        comecarTorneio.setAttribute("onClick","gerarTelaDisputa()");
+        comecarTorneio.setAttribute("onClick","verificaTimes()");
         local.appendChild(comecarTorneio); 
         novaTela();
     }
@@ -64,7 +64,7 @@ function gerarTelaRanking() {
     local.appendChild(titulo);
     tabela.appendChild(tipos);
     
-    for(c=0;c<quantidade.value;c++) {
+    for(c=0;c<times.length;c++) {
         let time = document.createElement('tr');
         let nome = document.createElement('td');
         nome.innerHTML = times[c].nome;
@@ -82,7 +82,7 @@ var vencedor
 var vencedores = [];
 var pos_vencedor;
 var vitorias = [];
-
+var disputa_feita = [];
 function resultadoJogo() {
     for (c = 0; c < numero_disputa; c++) { 
 
@@ -90,7 +90,10 @@ function resultadoJogo() {
 
         for (j = 0; j < times.length; j++) {
             if (selecionar == times[j].nome) {
+                if (disputa_feita.indexOf(c) == -1) {
                 times[j].quantidade_vitorias += 1;
+                disputa_feita.push(c);
+                }
             }
         }
     }
@@ -143,22 +146,27 @@ function nomeRepetido() {
     }
 }
 
-const times = [];
+var times = [];
 var numero_disputa = 0;
 
-function gerarTelaDisputa() {
+function verificaTimes() {
     if (nomeRepetido() == true) {
         alert("Nome de time inválido.");
     } else {
         combinarTimes();
+        gerarTelaDisputa();
+    }
+}
+
+function gerarTelaDisputa() {
         let local = document.querySelector("#menu-inicial");
         local.innerHTML = "";
         let imagem = document.createElement("img");
         imagem.setAttribute("src","nuvem.png");
         imagem.setAttribute("id","titulo-menu3");
         local.appendChild(imagem);
-        for(c=0;c<quantidade.value-1;c++) {
-            for(j=c+1;j<quantidade.value;j++) {
+        for(c=0;c<times.length-1;c++) {
+            for(j=c+1;j<times.length;j++) {
                 let divisoria = document.createElement("div");
                 let divisoria2 = document.createElement("div");
                 let divisoria3 = document.createElement("div");
@@ -177,12 +185,23 @@ function gerarTelaDisputa() {
                 let selecionar = document.createElement("select");
                 selecionar.setAttribute("id","input-options" + numero_disputa); 
                 selecionar.setAttribute("class","input-options"); 
-                let options1 = document.createElement("option");
-                let options2 = document.createElement("option");
-                options1.innerHTML = times[j].nome;
-                options2.innerHTML = times[c].nome;
-                selecionar.appendChild(options1);
-                selecionar.appendChild(options2);
+                if (disputa_feita.indexOf(numero_disputa) != -1) {
+                    let option = document.createElement("option");
+                    option.innerHTML = "Winner Settle";
+                    selecionar.appendChild(option);
+                    selecionar.style.backgroundColor = "#C1E1C1";
+                } else {
+                    let options1 = document.createElement("option");
+                    let options2 = document.createElement("option");
+                    //let options3 = document.createElement("option");
+                    options1.innerHTML = times[j].nome;
+                    options2.innerHTML = times[c].nome;
+                    //options3.innerHTML = "Select an Option";
+                    //selecionar.appendChild(options3);
+                    selecionar.innerHTML = "<option value='none' selected disabled hidden>Select an Option</option>"
+                    selecionar.appendChild(options1);
+                    selecionar.appendChild(options2);
+                }
                 divisoria3.appendChild(selecionar);
                 divisoria2.appendChild(texto);
                 divisoria2.appendChild(texto2);
@@ -198,8 +217,13 @@ function gerarTelaDisputa() {
     botao.setAttribute("id","botao-resultado");
     botao.setAttribute("value","Show");
     botao.setAttribute("onclick", "gerarTelaRanking()");
+    let botao2 = document.createElement("input");
+    botao2.setAttribute("type","button");
+    botao2.setAttribute("id","botao-resultado");
+    botao2.setAttribute("value","Save");
+    botao2.setAttribute("onclick", "armazenar()");
+    local.appendChild(botao2);
     local.appendChild(botao);
-    }
 }
 
 function combinarTimes() {
@@ -209,6 +233,23 @@ function combinarTimes() {
     }
 }
 
+function armazenar() {
+    resultadoJogo();
+    localStorage.setItem("times",JSON.stringify(times));
+    localStorage.setItem("Disputas",JSON.stringify(disputa_feita));
+}
+
+function apagar() {
+    localStorage.removeItem("times");
+}
+
+function recuperar() {
+    //var times_antigo = localStorage.getItem("times");
+    times = JSON.parse(localStorage.getItem("times"));
+    disputa_feita = JSON.parse(localStorage.getItem("Disputas"));
+    novaTela();
+    gerarTelaDisputa();
+}
 
 
 
