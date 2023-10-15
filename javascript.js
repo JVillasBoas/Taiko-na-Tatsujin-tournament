@@ -190,7 +190,7 @@ function gerarTelaDisputa() {
                 divisoria.appendChild(divisoria3);
                 divisoria.appendChild(divisoria2);
                 local.appendChild(divisoria);
-                numero_disputa++
+                numero_disputa++;
         }
     }
     let botao = document.createElement("input");
