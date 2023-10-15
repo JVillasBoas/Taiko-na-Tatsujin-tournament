@@ -45,6 +45,7 @@ function gerarTelaNomear() {
 
 function gerarTelaRanking() {
     resultadoJogo();
+    //document.body.style.height = "100vh";
     let local = document.querySelector("#menu-inicial");
     local.innerHTML = "";
     let imagem = document.createElement("img");
@@ -170,6 +171,7 @@ function gerarTelaDisputa() {
                 let divisoria = document.createElement("div");
                 let divisoria2 = document.createElement("div");
                 let divisoria3 = document.createElement("div");
+                divisoria3.setAttribute("class","select-div");
                 divisoria3.innerHTML = 'Select the winner:'
                 divisoria2.setAttribute("class","disputas");
                 divisoria.setAttribute("class","jogo");
@@ -222,8 +224,11 @@ function gerarTelaDisputa() {
     botao2.setAttribute("id","botao-resultado");
     botao2.setAttribute("value","Save");
     botao2.setAttribute("onclick", "armazenar()");
-    local.appendChild(botao2);
-    local.appendChild(botao);
+    let div = document.createElement("div");
+    div.setAttribute("id","botoes");
+    div.appendChild(botao2);
+    div.appendChild(botao);
+    local.appendChild(div);
 }
 
 function combinarTimes() {
